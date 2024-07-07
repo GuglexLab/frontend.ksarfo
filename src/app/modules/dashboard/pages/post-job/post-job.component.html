@@ -1,0 +1,209 @@
+<section class="container">
+  <h3 class="heading-main">Create new application</h3>
+  <div class="main-left">
+    <form #form="ngForm" class="form" (ngSubmit)="submit">
+      <div class="form-group">
+        <label for=""> Job Title / Postion </label>
+        <input class="form-input" [(ngModel)]="position" type="text" name="position"
+          placeholder="eg. senior software engineer" [ngClass]="{
+            'is-invalid': submitted && getControls.position.errors
+          }
+          
+          " />
+        <div *ngIf="submitted && getControls.position.errors" class="invalid-feedback">
+          <div *ngIf="getControls.position.errors.required">
+            Example: "Principal Software Engineer”. Titles must describe one
+            position.
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label for=""> Job Title </label>
+        <input class="form-input" [(ngModel)]="title" type="text" name="title"
+          placeholder="eg. senior software engineer" [ngClass]="{
+            'is-invalid': submitted && getControls.title.errors
+          }
+          
+          " />
+        <div *ngIf="submitted && getControls.title.errors" class="invalid-feedback">
+          <div *ngIf="getControls.title.errors.required">
+            Example: "Principal Software Engineer”. Titles must describe one
+            position.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Locations Allowed</mat-label>
+          <mat-select  name="locationAllowed" [(ngModel)]="locationAllowed">
+            <mat-option *ngFor="let location of locationList" [value]="location">
+              {{ location }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- <label for="">Select Category </label> -->
+      <mat-form-field appearance="outline">
+        <mat-label> Select Category </mat-label>
+        <mat-select name="jobCategory" [(ngModel)]="jobCategory">
+          <mat-option *ngFor="let category of categoriesList" [value]="category">
+            {{ category }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="form-group">
+        <label for="">Tags job could be searched with</label>
+        <mat-form-field appearance="outline">
+          <mat-label> Serch tags </mat-label>
+          <mat-select name="jobSerachTags" [(ngModel)]="jobSearchTags" multiple>
+            <mat-option *ngFor="let topping of categoriesList" [value]="topping">{{topping}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="submitted && getControls.jobSearchTags.errors" class="invalid-feedback">
+          <div *ngIf="getControls.jobSearchTags.errors.required">
+            Example: "Software engineer, node, javascript "
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for=""> Job Type </label>
+        <input class="form-input" name="jobType" [(ngModel)]="jobType" type="url" placeholder="" />
+      </div>
+
+
+      <div class="form-group">
+        <mat-card-header>
+          <p>Job Description</p>
+        </mat-card-header>
+
+        <mat-card-content>
+          <editor apiKey="96v08iycybbz8rffjogkkarvz1pkcf7s6skp266n2taioplo" 
+            [(ngModel)]="jobDescription" name="description" #editor [init]="{
+            height: 300,
+            width: '100%',
+            menubar: false,
+            plugins: [
+              'advlist autolink lists link image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount'
+            ],
+            toolbar:
+            'undo redo | formatselect | bold italic backcolor | \
+            alignleft aligncenter alignright alignjustify | \
+            bullist numlist outdent indent | removeformat | help'
+          }"></editor>
+        </mat-card-content>
+        <div *ngIf="submitted && getControls.jobDescription.errors" class="invalid-feedback">
+          <div *ngIf="getControls.jobDescription.errors.required">
+            Please add job description
+          </div>
+        </div>
+      </div>
+      <!-- <p> {{ jobDescription }} <p> -->
+
+      <p>Tell us More about your Company</p>
+      <div class="form-group">
+        <label for="">Company Name</label>
+        <input class="form-input" name="companyName"  [(ngModel)]="companyName" type="text"
+          placeholder="eg. company inc" [ngClass]="{
+            'is-invalid': submitted && getControls.companyName.errors
+          }" />
+        <div *ngIf="submitted && getControls.jobDescription.errors" class="invalid-feedback">
+          <div *ngIf="getControls.jobDescription.errors.required">
+            Please add a company
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label for=""> Currency </label>
+        <input class="form-input" name="currency"  [(ngModel)]="currency" type="url" placeholder="" />
+      </div>
+
+      <div class="form-group">
+        <label for=""> Application URL </label>
+        <input class="form-input" name="companyUrl"  [(ngModel)]="applicationURL" placeholder="" />
+      </div>
+
+
+
+      <!-- <div class="form-group">
+        <label for="">Company Website</label>
+        <input
+          class="form-input"
+          name="companyUrl"
+          formControlName="companyUrl"
+          type="url"
+          placeholder="https://www.companywebsite.com"
+        />
+      </div> -->
+
+      <!-- <div class="form-group">
+        <label for="">Company Size</label>
+        <input
+          class="form-input"
+          name="companySize"
+          formControlName="companySize"
+          type="email"
+          placeholder="0-10"
+        />
+      </div> -->
+
+      <!-- <div class="form-group">
+        <label for="">Upload logo</label> <br />
+        <input
+          type="file"
+          name="companyLogo"
+          formControlName="companyLogo"
+          id=""
+        />
+      </div> -->
+
+      <!-- <div class="form-group">
+        <label for="">Company Twitter</label>
+        <input
+          class="form-input"
+          name="companyTwitter"
+          formControlName="companyTwitter"
+          type="url"
+          placeholder="https://www.companywebsite.com"
+        />
+      </div> -->
+
+      <!-- <div class="form-group">
+        <label for="">Company LinkedIn</label>
+        <input
+          class="form-input"
+          name="companyLinkedin"
+          formControlName="companyLinkedin"
+          type="url"
+          placeholder="https://www.companylinkedin.com"
+        />
+      </div> -->
+
+      <!-- <div class="form-group">
+        <label for="">Company Email</label>
+        <input
+          class="form-input"
+          name="companyEmail"
+          formControlName="companyEmail"
+          type="email"
+          placeholder="companyemail@gmail.com"
+        />
+      </div> -->
+
+      <div class="">
+        <button class="btn btn-default" (click)="submit()">Post job</button>
+      </div>
+    </form>
+  </div>
+</section>

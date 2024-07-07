@@ -1,0 +1,62 @@
+<app-header></app-header>
+
+<section class="container">
+  <div class="main-overview" *ngIf="jobDetails">
+    <div class="logo-container">
+      <img
+        class="logo"
+        src="https://s3.remote.io/img/company/628815334705.png"
+        alt=""
+        srcset=""
+      />
+    </div>
+
+    <h2>{{ jobDetails.position }}</h2>
+    <h5>{{ jobDetails.title }}</h5>
+
+    <div class="header">
+      <ul class="header-ul">
+        <li class="header-li">
+          <mat-icon> dashboard </mat-icon>
+          <a class="header-link" routerLink=""> {{ jobDetails.jobType }} </a>
+        </li>
+
+        <li class="header-li">
+          <mat-icon>location_on </mat-icon>
+          <a class="header-link" routerLink="">
+            {{ jobDetails.locationAllowed }}
+          </a>
+        </li>
+
+        <li class="header-li">
+          <mat-icon>share </mat-icon>
+          <a class="header-link"> Share this job </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="post-overview">
+      <div class="social-links">
+        <ul>
+          <li *ngFor="let tag of jobDetails.jobSearchTags">
+            <a> {{ tag }} </a>
+          </li>
+        </ul>
+      </div>
+      <br />
+      <p>Posted on  {{ jobDetails.datePosted | date }}</p>
+
+      <div class="post-desc">
+        <h3> Job Description </h3>
+        <p #description class="description">
+          {{renderDescription(description)}}
+        </p>
+      </div>
+
+
+      <div>
+        <button class="btn btn-default">Apply for position</button>
+      </div>
+    </div>
+  </div>
+</section>
