@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class JobService {
   private BASE_URL = `${environment.BASE_URL}/jobs`;
-  // https://workport-api.herokuapp.com/api/v1/jobs
+  
 
   constructor(
     private httpClient: HttpClient,

@@ -1,25 +1,14 @@
+ 
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-// const BASE_URL = 'https://workport-api.herokuapp.com/api/v1';
-
-
-// app.use("/api/v1/users/", userRoutes);
-// app.use("/api/v1/products/", productsRouter);
-// app.use("/api/v1/categories/", categoriesRouter);
-// app.use("/api/v1/brands/", brandsRouter);
-// app.use("/api/v1/colors/", colorRouter);
-// app.use("/api/v1/reviews/", reviewRouter);
-// app.use("/api/v1/orders/", orderRouter);
-// app.use("/api/v1/coupons/", couponsRouter);
-
+ 
 
 @Injectable({
   providedIn: 'root',
 })
-
-
-export class CompanyService {
+export class BrandsService {
   private BASE_URL = `${environment.BASE_URL}/companies`; 
  
   constructor(private httpClient: HttpClient) {}

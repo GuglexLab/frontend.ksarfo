@@ -50,7 +50,7 @@ export class AuthService {
    * @description user signup **
    */
   signUp(user: any) {
-    return this.httpClient.post(`${this.BASE_URL}/auth/register`, user);
+    return this.httpClient.post(`${this.BASE_URL}/users/register`, user);
   }
 
   /**
@@ -67,7 +67,7 @@ export class AuthService {
         // Authorization: 'Basic ' + hash,
       })
     };
-    return this.httpClient.post(`${this.BASE_URL}/auth/login`, body, httpOptions)
+    return this.httpClient.post(`${this.BASE_URL}/users/login`, body, httpOptions)
   }
   /**
    *
@@ -109,7 +109,7 @@ export class AuthService {
       })
     };
 
-    return this.httpClient.get(`${this.BASE_URL}/auth/me`, httpOptions)
+    return this.httpClient.get(`${this.BASE_URL}/users/me`, httpOptions)
   }
 
   /**
@@ -118,7 +118,7 @@ export class AuthService {
    * @returns
    */
   forgotPassword(email: string) {
-    return this.httpClient.post(`${this.BASE_URL}/auth/forgotpassword`, email);
+    return this.httpClient.post(`${this.BASE_URL}/users/forgotpassword`, email);
   }
 
   /**

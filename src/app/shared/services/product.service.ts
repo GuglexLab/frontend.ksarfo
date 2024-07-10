@@ -1,26 +1,15 @@
+ 
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-// const BASE_URL = 'https://workport-api.herokuapp.com/api/v1';
-
-
-// app.use("/api/v1/users/", userRoutes);
-// app.use("/api/v1/products/", productsRouter);
-// app.use("/api/v1/categories/", categoriesRouter);
-// app.use("/api/v1/brands/", brandsRouter);
-// app.use("/api/v1/colors/", colorRouter);
-// app.use("/api/v1/reviews/", reviewRouter);
-// app.use("/api/v1/orders/", orderRouter);
-// app.use("/api/v1/coupons/", couponsRouter);
 
 
 @Injectable({
   providedIn: 'root',
 })
-
-
-export class CompanyService {
-  private BASE_URL = `${environment.BASE_URL}/companies`; 
+export class ProductService {
+  private BASE_URL = `${environment.BASE_URL}/products`; 
  
   constructor(private httpClient: HttpClient) {}
 
@@ -28,7 +17,7 @@ export class CompanyService {
    * 
    * @returns 
    */
-  getAllCompanyListing() {
+  getAllProductsInCatlog() {
     const httpOptions = {
       headers : new HttpHeaders({
         'Content-Type' : 'application/json'
@@ -42,7 +31,7 @@ export class CompanyService {
    * @param companyId 
    * @returns 
    */
-  findCompanyById(companyId : string) {
+  getAllProductsInCatlogById(companyId : string) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -52,11 +41,27 @@ export class CompanyService {
   }
 
 
+  
+   /**
+   * 
+   * @param companyId 
+   * @returns 
+   */
+   getAllProductsInCatlogBySlug(slug : string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+    return this.httpClient.get(`${this.BASE_URL}/${slug}`, httpOptions);
+  }
+
+
   /**
    * 
    * @param companyId 
    */
-  createCompany(companyData : any) {
+  addNewProduct(companyData : any) {
     let payload = JSON.stringify(companyData);
 
     const httpOptions = {
@@ -72,7 +77,7 @@ export class CompanyService {
    * @param companyId 
    * @param companyData 
    */
-  updateCompany(companyId : string , companyData : any) {
+  updateProduct(companyId : string , companyData : any) {
     
     const httpOptions = {
       headers: new HttpHeaders({
@@ -88,7 +93,7 @@ export class CompanyService {
    * 
    * @param jobId 
    */
-  deleteCompany(companyId : string) {
+  deleteProduct(companyId : string) {
     // return this.delete(this.getUrlById(jobId));
     const httpOptions = {
       headers: new HttpHeaders({
