@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class BrandsService {
-  private BASE_URL = `${environment.BASE_URL}/companies`; 
+  private BASE_URL = `${environment.BASE_URL}/brands`; 
  
   constructor(private httpClient: HttpClient) {}
 
@@ -17,7 +17,7 @@ export class BrandsService {
    * 
    * @returns 
    */
-  getAllCompanyListing() {
+  getAllBrands() {
     const httpOptions = {
       headers : new HttpHeaders({
         'Content-Type' : 'application/json'
@@ -31,7 +31,7 @@ export class BrandsService {
    * @param companyId 
    * @returns 
    */
-  findCompanyById(companyId : string) {
+  findBrandById(companyId : string) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ export class BrandsService {
    * 
    * @param companyId 
    */
-  createCompany(companyData : any) {
+  addNewBrand(companyData : any) {
     let payload = JSON.stringify(companyData);
 
     const httpOptions = {
@@ -61,7 +61,7 @@ export class BrandsService {
    * @param companyId 
    * @param companyData 
    */
-  updateCompany(companyId : string , companyData : any) {
+  updateBrand(companyId : string , companyData : any) {
     
     const httpOptions = {
       headers: new HttpHeaders({
@@ -77,7 +77,7 @@ export class BrandsService {
    * 
    * @param jobId 
    */
-  deleteCompany(companyId : string) {
+  deeletBrand(companyId : string) {
     // return this.delete(this.getUrlById(jobId));
     const httpOptions = {
       headers: new HttpHeaders({

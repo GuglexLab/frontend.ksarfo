@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { ProductService } from 'src/app/shared/services/product.service';
+import { environment as env } from 'src/environments/environment';
 // import { JobService } from 'src/app/shared/services/job.service';
 
 const SAMPLE_DATA = [
@@ -98,27 +100,30 @@ export class HomeComponent implements OnInit {
   jobDescription: string;
   jobListings: any = [];
   jobIdx: any;
+  ASSETURL = env.ASSETURL;
+ 
 
-  SAMPLE_DATA = SAMPLE_DATA;
+  SAMPLE_DATA = [];
   PRODUCTS = PRODUCTS;
 
   constructor(
-    // private jobService: JobService,
     private authService: AuthService,
+    public productService : ProductService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.isLoading = true;
-    // this.loadAllJobs();
     this.checkAuth();
+    this.loadAllProducts();
   }
 
-  loadAllJobs() {
-    // this.jobService.getAllJobs().subscribe((jobs) => {
-    //   this.jobListings = jobs;
-    //   this.isLoading = false;
-    // });
+  loadAllProducts() {
+    this.productService.getAllProductsInCatlog().subscribe((data :any) => {
+      console.log(data, "")
+      this.SAMPLE_DATA = data.products;
+      this.isLoading = false;
+    });
   }
 
   checkAuth() {
@@ -128,4 +133,14 @@ export class HomeComponent implements OnInit {
   getJobDetails(id: any) {
     this.router.navigate(['job-details', id]);
   }
+
+
+  // getImageUrl(imagePath: string): string {
+  //   return `${this.ASSETURL}${imagePath}`;
+  // }
+
+  getImageUrl(imagePath: string): string {
+    return `${this.ASSETURL}/${imagePath}`;
+  }
+
 }

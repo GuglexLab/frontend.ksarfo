@@ -21,22 +21,25 @@ import { ProductService } from "src/app/shared/services/product.service";
 export class PostJobComponent implements OnInit {
   loading = false;
   submitted = false;
+
   locationList = LocationsAllowed;
   categoriesList = CategoriesList;
   categories = CategoriesList;
+
   postJobForm: FormGroup;
 
  
 
   constructor(
     private router: Router,
-    // private jobService: JobService,
     private productService : ProductService,
     private fb: FormBuilder,
     private nofication: NotificationService
   ) {
     this.createJobForm();
   }
+
+  
 
   ngOnInit(): void {
     // this.description = this.postJobForm.get('description').value;

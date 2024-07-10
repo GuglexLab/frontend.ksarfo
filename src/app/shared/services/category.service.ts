@@ -1,25 +1,15 @@
-// import { Injectable } from '@angular/core';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class CategoryService {
-
-//   constructor() { }
-// }
-
-
+ 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-// const BASE_URL = 'https://workport-api.herokuapp.com/api/v1';
+ 
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class CategoryService {
-  private BASE_URL = `${environment.BASE_URL}/companies`; 
+  private BASE_URL = `${environment.BASE_URL}/categories`; 
  
   constructor(private httpClient: HttpClient) {}
 
