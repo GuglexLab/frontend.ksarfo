@@ -27,7 +27,7 @@ export class CategoryService {
    * 
    * @returns 
    */
-  getAllCompanyListing() {
+  getAllCategories() {
     const httpOptions = {
       headers : new HttpHeaders({
         'Content-Type' : 'application/json'
@@ -41,13 +41,13 @@ export class CategoryService {
    * @param companyId 
    * @returns 
    */
-  findCompanyById(companyId : string) {
+  findCategoriesById(categoryId : string) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
     };
-    return this.httpClient.get(`${this.BASE_URL}/${companyId}`, httpOptions);
+    return this.httpClient.get(`${this.BASE_URL}/${categoryId}`, httpOptions);
   }
 
 
@@ -55,7 +55,7 @@ export class CategoryService {
    * 
    * @param companyId 
    */
-  createCompany(companyData : any) {
+  createCategory(companyData : any) {
     let payload = JSON.stringify(companyData);
 
     const httpOptions = {
@@ -71,7 +71,7 @@ export class CategoryService {
    * @param companyId 
    * @param companyData 
    */
-  updateCompany(companyId : string , companyData : any) {
+  updateCategory(categoryId : string , companyData : any) {
     
     const httpOptions = {
       headers: new HttpHeaders({
@@ -79,7 +79,7 @@ export class CategoryService {
       }),
     };
 
-    return this.httpClient.put(this.BASE_URL + companyId , companyData, httpOptions);
+    return this.httpClient.put(this.BASE_URL + categoryId , companyData, httpOptions);
   }
 
 
@@ -87,7 +87,7 @@ export class CategoryService {
    * 
    * @param jobId 
    */
-  deleteCompany(companyId : string) {
+  deleteCategory(categoryId : string) {
     // return this.delete(this.getUrlById(jobId));
     const httpOptions = {
       headers: new HttpHeaders({
@@ -95,7 +95,7 @@ export class CategoryService {
       }),
     };
 
-    return this.httpClient.delete(this.BASE_URL + companyId, {
+    return this.httpClient.delete(this.BASE_URL + categoryId, {
       ...httpOptions,
       withCredentials : true
     })

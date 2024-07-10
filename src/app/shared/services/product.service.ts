@@ -5,6 +5,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 
+
+// app.use("/api/v1/users/", userRoutes);
+// app.use("/api/v1/products/", productsRouter);
+// app.use("/api/v1/categories/", categoriesRouter);
+// app.use("/api/v1/brands/", brandsRouter);
+// app.use("/api/v1/colors/", colorRouter);
+// app.use("/api/v1/reviews/", reviewRouter);
+// app.use("/api/v1/orders/", orderRouter);
+// app.use("/api/v1/coupons/", couponsRouter);
+
+
+
 @Injectable({
   providedIn: 'root',
 })

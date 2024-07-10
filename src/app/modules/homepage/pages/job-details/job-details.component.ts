@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { IJob } from 'src/app/shared/dto/create-job.dto';
-import { JobService } from 'src/app/shared/services/job.service';
+// import { JobService } from 'src/app/shared/services/job.service';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class JobDetailsComponent implements OnInit {
   jobDetails : any;
 
   constructor(
-    private jobService: JobService,
+    // private jobService: JobService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -22,10 +22,10 @@ export class JobDetailsComponent implements OnInit {
   ngOnInit(): void {
     const id  = this.route.snapshot.params['id'];
 
-    this.jobService.findJobById(id).subscribe((res : any) => {
-      console.log(res);
-       this.jobDetails = res?.data ;  
-    }) ;
+    // this.jobService.findJobById(id).subscribe((res : any) => {
+    //   console.log(res);
+    //    this.jobDetails = res?.data ;  
+    // }) ;
   }
 
 

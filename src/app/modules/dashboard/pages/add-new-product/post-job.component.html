@@ -1,0 +1,120 @@
+<section class="container">
+  <h3 class="heading-main">Create new Product to Catlog</h3>
+
+  <div class="main-left">
+    <form #form="ngForm" [formGroup]="postJobForm" class="form" (ngSubmit)="submit">
+
+      <div class="form-group">
+        <label for=""> Name of Product </label>
+        <input class="form-input" formControlName="name" type="text" name="name"
+          placeholder="eg. HP Envy Brand New" [ngClass]="{
+            'is-invalid': submitted && getControls.name.errors
+          }
+          
+          " />
+        <div *ngIf="submitted && getControls.name.errors" class="invalid-feedback">
+          <div *ngIf="getControls.name.errors.required">
+            Example: "Principal Software Engineer”. Titles must describe one
+            name.
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>  Brands </mat-label>
+          <mat-select  name="locationAllowed" formControlName="brand">
+            <mat-option *ngFor="let location of locationList" [value]="location">
+              {{ location }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+
+      <!-- <label for="">Select Category </label> -->
+      <mat-form-field appearance="outline">
+        <mat-label> Select Category </mat-label>
+        <mat-select name="jobCategory" formControlName="category">
+          <mat-option *ngFor="let category of categoriesList" [value]="category">
+            {{ category }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+
+
+      <div class="form-group">
+        <label for=""> Price  </label>
+        <input class="form-input" formControlName="price" type="text" name="name"
+          placeholder="eg. HP Envy Brand New" [ngClass]="{
+            'is-invalid': submitted && getControls.price.errors
+          }
+          
+          " />
+        <div *ngIf="submitted && getControls.price.errors" class="invalid-feedback">
+          <div *ngIf="getControls.price.errors.required">
+            Example: "Principal Software Engineer”. Titles must describe one
+            name.
+          </div>
+        </div>
+      </div>
+ 
+
+      <div class="form-group">
+        <label for=""> Quanity </label>
+        <input class="form-input" formControlName="totalQty" type="text" name="name"
+          placeholder="eg. HP Envy Brand New" [ngClass]="{
+            'is-invalid': submitted && getControls.totalQty.errors
+          }
+          
+          " />
+        <div *ngIf="submitted && getControls.totalQty.errors" class="invalid-feedback">
+          <div *ngIf="getControls.totalQty.errors.required">
+            Quanity 
+          </div>
+        </div>
+      </div>
+
+  
+
+      <div class="form-group">
+        <mat-card-header>
+          <p>Job Description</p>
+        </mat-card-header>
+
+        <mat-card-content>
+          <editor apiKey="96v08iycybbz8rffjogkkarvz1pkcf7s6skp266n2taioplo" 
+           formControlName="description" name="description" #editor [init]="{
+            height: 200,
+            width: '100%',
+            menubar: false,
+            plugins: [
+              'advlist autolink lists link image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount'
+            ],
+            toolbar:
+            'undo redo | formatselect | bold italic backcolor | \
+            alignleft aligncenter alignright alignjustify | \
+            bullist numlist outdent indent | removeformat | help'
+          }"></editor>
+        </mat-card-content>
+        <div *ngIf="submitted && getControls.description.errors" class="invalid-feedback">
+          <div *ngIf="getControls.description.errors.required">
+            Please add  description
+          </div>
+        </div>
+      </div>
+
+
+     
+      <div class="">
+        <button class="btn btn-default" (click)="submit()"> Add Product </button>
+      </div>
+    </form>
+  </div>
+</section>

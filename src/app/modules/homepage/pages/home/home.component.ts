@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { JobService } from 'src/app/shared/services/job.service';
+// import { JobService } from 'src/app/shared/services/job.service';
 
 const SAMPLE_DATA = [
   {
@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit {
   PRODUCTS = PRODUCTS;
 
   constructor(
-    private jobService: JobService,
+    // private jobService: JobService,
     private authService: AuthService,
     private router: Router
   ) {}
@@ -115,10 +115,10 @@ export class HomeComponent implements OnInit {
   }
 
   loadAllJobs() {
-    this.jobService.getAllJobs().subscribe((jobs) => {
-      this.jobListings = jobs;
-      // this.isLoading = false;
-    });
+    // this.jobService.getAllJobs().subscribe((jobs) => {
+    //   this.jobListings = jobs;
+    //   this.isLoading = false;
+    // });
   }
 
   checkAuth() {
