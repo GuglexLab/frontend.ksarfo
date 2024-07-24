@@ -51,8 +51,8 @@ export class HomeComponent implements OnInit {
   scenes = [1, 2, 3, 4];
   currentScene = 1;
   heroBackgroundImages = [
-    'url("https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-24-300x240.png")',
-    'url("https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-21-300x240.png")',
+    'url("https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/blog-posts-3-scaled-e1695291811949.jpg")',
+    'url("https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/blog-posts-2-scaled-e1695291769102.jpg")',
     'url("https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/blog-post-1-scaled-e1695291695341-768x610.jpg")',
     'url("https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/blog-posts-5-scaled-e1695291899694.jpg")'
   ];
