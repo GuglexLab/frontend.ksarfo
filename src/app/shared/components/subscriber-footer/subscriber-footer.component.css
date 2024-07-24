@@ -1,0 +1,56 @@
+.subcriber-footer {
+  text-align: center;
+  padding-bottom: 2rem;
+}
+.subcriber-footer h4 {
+  font-size: 1.2rem;
+  padding-top: 2rem;
+  font-weight: bold;
+}
+.subcriber-footer p {
+  color: rgb(161, 160, 159);
+}
+
+.btn-subscribe {
+  outline: none;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  margin-top: 2rem;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+.form-control {
+  padding: 0.7rem;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  width: 85%;
+}
+.form-control:focus {
+  outline: none;
+  border: none;
+}
+.form-control::-moz-placeholder {
+  font-size: 1rem;
+}
+.form-control::placeholder {
+  font-size: 1rem;
+}
+
+.form-group {
+  width: 50%;
+}
+
+@media screen and (max-width: 935px) {
+  .form-control {
+    width: 95%;
+  }
+  .form {
+    width: 100%;
+  }
+}/*# sourceMappingURL=subscriber-footer.component.css.map */

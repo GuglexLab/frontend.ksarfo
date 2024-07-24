@@ -5,62 +5,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { environment as env } from 'src/environments/environment';
 // import { JobService } from 'src/app/shared/services/job.service';
-
-const SAMPLE_DATA = [
-  {
-    tag : "Phone",
-    image : "/assets/envy/photo_2024-06-10_15-49-49.jpg",
-    date : "1st June 2024",
-    title : "HP Gaming Laptop. Performance testinig for Speed and strength"
-  },
-  {
-    tag : "Laptop",
-    image : "/assets/envy/photo_2024-06-10_15-49-52.jpg",
-    date : "1st June 2024",
-    title : " HP Gaming Laptop. Performance testinig for Speed and strength"
-  },
-  {
-    tag : "Earpiece",
-    image : "/assets/envy/photo_2024-06-10_15-49-52.jpg",
-    date : "1st June 2024",
-    title : " HP Gaming Laptop. Performance testinig for Speed and strength"
-  },
-  {
-    tag : "Earpiece",
-    image : "/assets/envy/photo_2024-06-10_15-49-52.jpg",
-    date : "1st June 2024",
-    title : " HP Gaming Laptop. Performance testinig for Speed and strength"
-  },
  
-  {
-    tag : "Earpiece",
-    image : "/assets/envy/photo_2024-06-10_15-49-52.jpg",
-    date : "1st June 2024",
-    title : " HP Gaming Laptop. Performance testinig for Speed and strength"
-  },
-  {
-    tag : "Software",
-    image : "/assets/envy/photo_2024-06-10_15-49-52.jpg",
-    date : "1st June 2024",
-    title : " HP Gaming Laptop. Performance testinig for Speed and strength"
-  },
-  {
-    tag : "Software",
-    image : "/assets/envy/photo_2024-06-10_15-49-52.jpg",
-    date : "1st June 2024",
-    title : " HP Gaming Laptop. Performance testinig for Speed and strength"
-  },
-  {
-    tag : "Software",
-    image : "/assets/envy/photo_2024-06-10_15-49-52.jpg",
-    date : "1st June 2024",
-    title : " HP Gaming Laptop. Performance testinig for Speed and strength"
-  },
-
-]
-
-
-
 
 const PRODUCTS = [
   {
@@ -101,15 +46,23 @@ export class HomeComponent implements OnInit {
   jobListings: any = [];
   jobIdx: any;
   ASSETURL = env.ASSETURL;
-  currentSlide = 0;
-  images = [
-    'https://trenda-production-uploads.s3.eu-north-1.amazonaws.com/uploads/c443861e-a084-407b-9a99-ba6a6903a95f-photo_2024-06-10_23-27-16.jpg',
-    '/assets/envy/photo_2024-06-10_15-49-49.jpg',
-    '/assets/envy/photo_2024-06-10_15-49-49.jpg'
-];
-
   SAMPLE_DATA = [];
   PRODUCTS = PRODUCTS;
+  scenes = [1, 2, 3, 4];
+  currentScene = 1;
+  heroBackgroundImages = [
+    'url("https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-24-300x240.png")',
+    'url("https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/4-21-300x240.png")',
+    'url("https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/blog-post-1-scaled-e1695291695341-768x610.jpg")',
+    'url("https://ninetheme.com/themes/electron2/wp-content/uploads/2023/08/blog-posts-5-scaled-e1695291899694.jpg")'
+  ];
+
+  heroTexts = [
+    'HP',
+    'LENOVO',
+    'DELL',
+    'APPLE'
+  ];
 
   constructor(
     private authService: AuthService,
@@ -121,11 +74,12 @@ export class HomeComponent implements OnInit {
     this.isLoading = true;
     this.checkAuth();
     this.loadAllProducts();
-  }
 
-  get sliderTransform() {
-    return `translateX(-${this.currentSlide * 100}%)`;
-}
+
+    this.setCurrentSceneFromRoute();
+    // this.updateHeroBackground();
+  }
+ 
 
   loadAllProducts() {
     this.productService.getAllProductsInCatlog().subscribe((data :any) => {
@@ -152,15 +106,31 @@ export class HomeComponent implements OnInit {
   getImageUrl(imagePath: string): string {
     return `${this.ASSETURL}/${imagePath}`;
   }
-
-  prevSlide() {
-    this.currentSlide = (this.currentSlide > 0) ? this.currentSlide - 1 : this.images.length - 1;
-}
+ 
 
 
+  setCurrentSceneFromRoute() {
+    // Example: Extract scene from route params and set this.currentScene
+    // Replace with your actual logic to determine the current scene
+    // For example, if using ActivatedRoute:
+    // this.route.params.subscribe(params => {
+    //   this.currentScene = params['id']; // Adjust based on your route structure
+    // });
+  }
+ 
 
-nextSlide() {
-    this.currentSlide = (this.currentSlide + 1) % this.images.length;
-}
+ 
+
+  get heroBackgroundImage() {
+    return this.heroBackgroundImages[this.currentScene - 1]; // Adjust index
+  }
+
+  get heroText() {
+    return this.heroTexts[this.currentScene - 1]; // Adjust index
+  }
+
+  changeScene(scene: number) {
+    this.currentScene = scene;
+  }
 
 }
