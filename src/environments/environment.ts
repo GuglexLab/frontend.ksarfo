@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   enableDebug : true,
   assetPreLoader : '',
-  APP : 'Workport',
+  APP : 'KSarfo',
   BASE_URL: 'http://localhost:4202/api/v1',
   ASSETURL : "http://localhost:4202",
   // BASE_URL : 'https://backend-ksarfo.onrender.com/api/v1',

@@ -7,7 +7,7 @@ import { AuthGuardService } from 'src/app/shared/services/auth-guard.service';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { SidebarComponent } from 'src/app/shared/components/sidebar/sidebar.component';
-import { JobDetailsComponent } from './pages/job-details/job-details.component';
+import { ProductDetailsComponent } from './pages/job-details/job-details.component';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 import { SearchBarComponent } from 'src/app/shared/components/search-bar/search-bar.component';
 import { BrandFooterComponent } from 'src/app/shared/components/brand-footer/brand-footer.component';
@@ -15,24 +15,24 @@ import { HeaderComponent } from './pages/home/header/header.component';
 import { HeaderAdComponent } from './pages/home/header-ad/header-ad.component';
 import { JobTypesComponent } from 'src/app/shared/components/job-types/job-types.component';
 import { SubscriberFooterComponent } from 'src/app/shared/components/subscriber-footer/subscriber-footer.component';
-
+import { MatCarouselModule } from '@ngbmodule/material-carousel';
 
 @NgModule({
     declarations: [
         HomeComponent,   
         SidebarComponent,
-        JobDetailsComponent,
         SearchBarComponent,
         PagenotfoundComponent,
         HeaderComponent,
         HeaderAdComponent,
         JobTypesComponent,
+        ProductDetailsComponent,
         BrandFooterComponent,
         SubscriberFooterComponent,
     ],
     imports: [
         CommonModule,
-        MaterialModule,
+        // MaterialModule,
         HomepageRoutingModule
     ],
     providers: [

@@ -53,6 +53,18 @@ export class ProductService {
   }
 
 
+
+
+  getProductBySlug(slug : string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+    return this.httpClient.get(`${this.BASE_URL}/info/${slug}`, httpOptions);
+  }
+
+
   
    /**
    * 

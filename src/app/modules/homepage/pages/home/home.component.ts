@@ -101,7 +101,12 @@ export class HomeComponent implements OnInit {
   jobListings: any = [];
   jobIdx: any;
   ASSETURL = env.ASSETURL;
- 
+  currentSlide = 0;
+  images = [
+    'https://trenda-production-uploads.s3.eu-north-1.amazonaws.com/uploads/c443861e-a084-407b-9a99-ba6a6903a95f-photo_2024-06-10_23-27-16.jpg',
+    '/assets/envy/photo_2024-06-10_15-49-49.jpg',
+    '/assets/envy/photo_2024-06-10_15-49-49.jpg'
+];
 
   SAMPLE_DATA = [];
   PRODUCTS = PRODUCTS;
@@ -118,6 +123,10 @@ export class HomeComponent implements OnInit {
     this.loadAllProducts();
   }
 
+  get sliderTransform() {
+    return `translateX(-${this.currentSlide * 100}%)`;
+}
+
   loadAllProducts() {
     this.productService.getAllProductsInCatlog().subscribe((data :any) => {
       console.log(data, "")
@@ -130,8 +139,9 @@ export class HomeComponent implements OnInit {
    this.authService.isAuthenticated();
   }
 
-  getJobDetails(id: any) {
-    this.router.navigate(['job-details', id]);
+  goto(id: any) {
+    console.log(id, "ID");
+    this.router.navigate(['product-details', id]);
   }
 
 
@@ -142,5 +152,15 @@ export class HomeComponent implements OnInit {
   getImageUrl(imagePath: string): string {
     return `${this.ASSETURL}/${imagePath}`;
   }
+
+  prevSlide() {
+    this.currentSlide = (this.currentSlide > 0) ? this.currentSlide - 1 : this.images.length - 1;
+}
+
+
+
+nextSlide() {
+    this.currentSlide = (this.currentSlide + 1) % this.images.length;
+}
 
 }
