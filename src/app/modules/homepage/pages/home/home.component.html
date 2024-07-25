@@ -35,6 +35,11 @@
 					Laptops
 				</a>
 
+				<a [href]="'/auth/login'"
+				class="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600">
+				 Login
+			</a>
+
 			</div>
 
 			<div class="flex items-center space-x-4">
@@ -242,8 +247,8 @@
 				<div (click)="goto(prod.url)"
 					class="bg-white rounded-lg overflow-hidden  hover:ring-1 hover:ring-gray-500  hover:ring-opacity-40 max-w-sm">
 					<div class="relative">
-						<ng-container *ngIf="!prod.images; else noImages">
-							<img [src]="getImageUrl(prod.images[0])"
+						<ng-container *ngIf="prod.images; else noImages">
+							<img [src]="prod.images[0]"
 								class="h-48 w-full object-cover object-center rounded-md"
 								alt="Product Image">
 						</ng-container>

@@ -150,7 +150,7 @@
  
             <div *ngFor="let prod of SAMPLE_DATA">
               <div (click)="goto(prod.url)" class="mx-auto mt-11 w-80 transform overflow-hidden shadow dark:bg-slate-800 duration-300">
-                <ng-container *ngIf="!prod.images; else noImages">
+                <ng-container *ngIf="prod.images; else noImages">
                    <img class="h-48 w-full object-cover object-center" [src]="getImageUrl(prod.images[0])" alt="Product Image" />
                 </ng-container>
 

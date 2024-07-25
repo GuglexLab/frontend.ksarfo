@@ -120,15 +120,15 @@
 				</a>
 			</div>
 		</div>
-		<!-- ./ Breadcrumbs -->
+
 
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
 			<div class="flex flex-col md:flex-row -mx-4">
 
 				<div class="md:flex-1 px-4 h-1/2">
-					<img src="https://trenda-production-uploads.s3.eu-north-1.amazonaws.com/uploads/c443861e-a084-407b-9a99-ba6a6903a95f-photo_2024-06-10_23-27-16.jpg"
+					<img [src]="productInfo.images[0]"
 						alt="product image"
-						class="w-full object-cover h-96">
+						class="w-full object-cover h-1.5">
 				</div>
 
 				<div class="md:flex-1 px-4">
@@ -150,7 +150,7 @@
 					</p>
 					<p>
 						<!-- Availability: {{productInfo.inStock || "In Stock"}} -->
-            Availability:  {{ productInfo.inStock ? 'In Stock' : 'Out of Stock' }}
+          				  Availability:  {{ productInfo.inStock ? 'In Stock' : 'Out of Stock' }}
 					</p>
 
           <div>
@@ -259,13 +259,13 @@
 				<div class="my-4">
 					<h3>Product Catalog</h3>
 				</div>
-        <!-- grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-2 -->
+              <!-- grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-2 -->
 				<div class="mt-1 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3  xl:grid-cols-4  md:gap-3 ">
 
 					<div *ngFor="let prod of SAMPLE_DATA" class="">
 						<div (click)="goto(prod.url)"	class= "">
-							<ng-container *ngIf="!prod.images; else noImages">
-								<img [src]="getImageUrl(prod.images[0])" class="h-48 w-full object-cover object-center"	alt="Product Image">
+							<ng-container *ngIf="prod.images; else noImages">
+								<img [src]=" prod.images[0]" class="h-48 w-full object-cover object-center"	alt="Product Image">
 							</ng-container>
 
 							<div class="px-4">
