@@ -7,13 +7,14 @@ import { DashboardComponent } from "./dashboard.component";
 import { DashboardRoutingModule } from "./dashboard-routing.module";
 import { PostJobComponent } from "./pages/add-new-product/post-job.component";
 import { ProfileComponent } from "./pages/profile/profile.component";
+import { ProductListingComponent } from './pages/product-listing/product-listing.component';
  
 @NgModule({
   declarations: [
     DashboardComponent,
     PostJobComponent,
     ProfileComponent,
-    // TestDemoComponent
+    ProductListingComponent
   ],
 
   imports: [

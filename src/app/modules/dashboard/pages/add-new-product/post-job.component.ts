@@ -5,6 +5,7 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
+  FormArray,
   Validators
 } from "@angular/forms";
 import {
@@ -56,25 +57,23 @@ export class PostJobComponent implements OnInit {
   
 
   ngOnInit(): void {
-    // this.description = this.postJobForm.get('description').value;
-    // this.createJobForm();
-    // this.jobDescription = this.jobDescription || "";
     this.loadAllBrands();
     this.loadAllCategories();
+
+
+    this.postJobForm.valueChanges.subscribe(v =>{
+      console.log(v, "FORMS VALUE:::");
+    })
   }
 
   createJobForm(){
     this.postJobForm = this.fb.group({
-
-    
-
       name :  ['' , [Validators.required]],
       description :  ['' , [Validators.required]],
       category :  ['' , [Validators.required]],
-      // sizes : ['', Validators.required],
-      // colors : [ '' , Validators.required],
       price : ['', Validators.required],
       totalQty : ['', Validators.required],
+      metadata: this.fb.array([this.createMetadata()]),
       brand : ['', Validators.required]
     })
   }
@@ -82,6 +81,30 @@ export class PostJobComponent implements OnInit {
   get getControls() {
     return this.postJobForm.controls;
   }
+
+  get metadata() {
+    return this.postJobForm.get('metadata') as FormArray;
+  }
+
+
+  createMetadata(): FormGroup {
+    return this.fb.group({
+      key: [''],
+      value: ['']
+    });
+  }
+
+  addMetadata() {
+    this.metadata.push(this.fb.group({
+      key: [''],
+      value: ['']
+    }));
+  }
+
+  removeMetadata(index: number) {
+    this.metadata.removeAt(index);
+  }
+
 
   loadAllCategories() {
     this.categoriesService.getAllCategories().subscribe(
@@ -114,8 +137,6 @@ export class PostJobComponent implements OnInit {
         for (let i = 0; i < files.length; i++) {
           if (files[i].size <= 7 * 1024 * 1024) {
             // this.compressImage(files[i]);
-
-            
 
           } else {
             const errorMessage = `File ${files[i].name} exceeds 7MB and will not be processed.`;
@@ -150,6 +171,7 @@ export class PostJobComponent implements OnInit {
       const compressedFile = await imageCompression(file, options);
       const fileName = compressedFile.name;
       const fileAlreadyExists = this.uploadedFiles.some(file => file.name === fileName);
+
       if(!fileAlreadyExists){
       this.uploadService.uploadImageWithWaterMark(compressedFile).subscribe({
         next : (uploaded) =>{
@@ -186,16 +208,16 @@ export class PostJobComponent implements OnInit {
 
 
   submit() {
-    // console.log(this.postJobForm.value);
+    console.log(this.postJobForm.value, "DATA::::::");
   
     this.productService.addNewProduct(this.postJobForm.value).subscribe(
       (res: any) => {
         console.log(res);
 
         if (res.status === "201") {
-          this.nofication.notify("Job Created successfully", "success-toast");
+          this.nofication.notify("Product added successfully", "success-toast");
           this.postJobForm.reset();
-          this.router.navigateByUrl("/jobs");
+          this.router.navigateByUrl("/dashboard/products");
         }
       },
       (err: any) => {
@@ -204,3 +226,31 @@ export class PostJobComponent implements OnInit {
     );
   }
 }
+
+
+// {
+//   "inStock": true,
+//   "discount": 0,
+//   "name": "Testing Service",
+//   "description": "Selling and Testing",
+//   "brand": "hp",
+//   "category": "electronics",
+//   "images": [
+//       "https://trenda-production-uploads.s3.eu-north-1.amazonaws.com/uploads/431e0763-4e09-45a3-bc99-c8ee9b80604aWhatsApp%20Image%202023-11-11%20at%2018.webp",
+//       "https://trenda-production-uploads.s3.eu-north-1.amazonaws.com/uploads/a4342c05-5746-4e95-a5dc-3c703cd2f765F0DBFC6D-6CBD-40CB-9F0B-1A6CCDAB8895.webp"
+//   ],
+//   "reviews": [],
+//   "price": 3800,
+//   "totalQty": 12,
+//   "totalSold": 0,
+//   "metadata": [
+//       {
+//           "key": "Condition",
+//           "value": "Brand New"
+//       }
+//   ],
+//   "qtyLeft": 2,
+//   "totalReviews": 0,
+//   "averageRating": "NaN",
+//   "id": "669ee9c8115eeac070c11ad0"
+// }

@@ -20,9 +20,8 @@ export class DashboardComponent implements OnInit {
   }
 
   links = [
-    { path: 'your-posts', icon: 'business', title: 'All Products' },
-    { path: 'add-product', icon: 'work', title: 'Add Product' },
-    // { path: 'profile', icon: 'account_circle', title: 'Profile' },
+    { path: 'product-listing', icon: 'dashboard', title: 'All Product' },
+    { path: 'add-product', icon: 'library_add', title: 'Add Product' }
   ];
 
   loggedIn() {

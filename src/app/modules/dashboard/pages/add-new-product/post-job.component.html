@@ -136,7 +136,7 @@
         <mat-form-field  appearance="outline">
           <mat-label>  Brands </mat-label>
           <mat-select  name="locationAllowed" formControlName="brand">
-            <mat-option *ngFor="let name of brands" [value]="name">
+            <mat-option *ngFor="let name of brands" [value]="name.name">
               {{ name.name | titlecase }}
             </mat-option>
           </mat-select>
@@ -148,7 +148,7 @@
       <mat-form-field  appearance="outline">
         <mat-label> Select Category </mat-label>
         <mat-select name="jobCategory" formControlName="category">
-          <mat-option *ngFor="let category of categories" [value]="category">
+          <mat-option *ngFor="let category of categories" [value]="category.name">
             {{ category.name | titlecase }}
           </mat-option>
         </mat-select>
@@ -160,7 +160,7 @@
       <div class="form-group">
         <label for=""> Price  </label>
         <input class="form-input" formControlName="price" type="number" name="name"
-          placeholder="eg. HP Envy Brand New" [ngClass]="{
+          placeholder="eg. 500" [ngClass]="{
             'is-invalid': submitted && getControls.price.errors
           }
           
@@ -176,7 +176,7 @@
       <div class="form-group">
         <label for=""> Quanity </label>
         <input class="form-input" formControlName="totalQty" type="text" name="name"
-          placeholder="eg. HP Envy Brand New" [ngClass]="{
+          placeholder="eg. 2" [ngClass]="{
             'is-invalid': submitted && getControls.totalQty.errors
           }
           
@@ -188,7 +188,35 @@
         </div>
       </div>
 
-  
+
+    <div class="form-wrapper">
+      <div formArrayName="metadata">
+        <div *ngFor="let meta of metadata.controls; let i = index">
+          <div [formGroupName]="i" class="form-group">
+            <div class="flex justify-between">
+              <div>
+                <label for=""> Property (eg.Color) </label>
+                <input formControlName="key" class="form-input" type="text" placeholder="Key" />
+              </div>
+              
+              <div>
+                <label for=""> Value (e.g Red) </label>
+                <input formControlName="value" class="form-input" type="text" placeholder="Value" />
+    
+              </div>
+            </div>
+       
+            <button type="button" class=" btn-sm btn-add" (click)="addMetadata()">Add Metadata</button>
+            <button type="button" class=" btn-sm btn-remove" (click)="removeMetadata(i)">Remove</button>
+
+          </div>
+        </div>
+      </div>
+
+
+      
+      </div>
+
 
       <div class="form-group">
         <mat-card-header>

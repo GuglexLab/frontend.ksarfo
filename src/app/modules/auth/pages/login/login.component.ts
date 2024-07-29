@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 
           // save user token
           this.authService.saveUserToken(x.token);
-          this.router.navigateByUrl('/add-product')
+          this.router.navigateByUrl('/product-listing');
         },
 
         (err) => {

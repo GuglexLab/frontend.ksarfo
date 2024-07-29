@@ -76,13 +76,33 @@ mat-form-field {
 }
 
 
+
 .btn {
   border: none;
   padding: 0.8rem 1.2rem;
   color: white;
   margin-top: 0.5rem;
   border-radius: 0.8rem;
+
 }
+
+
+.btn-sm{
+  padding: 0.3rem 0.8rem;
+  color: white;
+  margin-top: 0.5rem;
+  border-radius: 0.8rem;
+
+
+  &.btn-remove{
+    background-color: red;
+  }
+
+  &.btn-add{
+    background-color: green;
+  }
+}
+
 
 .btn-default {
   background-color: rgb(15, 12, 12);
