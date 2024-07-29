@@ -8,9 +8,9 @@ export const environment = {
   enableDebug : true,
   assetPreLoader : '',
   APP : 'KSarfo',
-  BASE_URL: 'http://localhost:4202/api/v1',
+  // BASE_URL: 'http://localhost:4202/api/v1',
   ASSETURL : "http://localhost:4202",
-  // BASE_URL : 'https://backend-ksarfo-cw4y.onrender.com/api/v1',
-  // ASSETURL : 'https://backend-ksarfo.onrender.com/public/uploads/'
+  BASE_URL : 'https://backend-ksarfo-cw4y.onrender.com/api/v1',
+  UPLOAD_URL : 'https://general-upload-service.onrender.com'
 };
  

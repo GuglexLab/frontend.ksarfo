@@ -21,25 +21,135 @@
       </div>
 
 
+      <div class="flex flex-col gt-xs:flex-row image-upload-container my-7">
+        <ng-container>
+           <div class="mb-4">
+            <p class="font-normal text-md text-gray-600">
+                Either single or multiple together. Support format include .jpg,
+                png and gif.
+                <span class="text-red">5MB Max file</span>
+            </p>
+
+            <p class="font-normal text-md text-gray-600">
+                Add at least 1 photo for product.
+                <span class="text-black">
+                    !! Please upload original image no screenshot or
+                    watermark
+                </span>
+            </p>
+
+            <p *ngIf="uploadError">
+                <span class="text-red-500 text-sm">
+                    {{ uploadErrorMessage }}
+                </span>
+            </p>
+           </div>
+
+            <div class="upload__box">
+                <div class="upload__btn-box">
+                    <label class="upload__btn">
+                        <mat-icon>cloud</mat-icon>
+                        <p class="text-md text-gray-600">
+                            Upload image
+                        </p>
+
+                        <input
+                            (change)="onFileInputChange($event)"
+                         
+                            type="file"
+                            multiple
+                            data-max_length="20"
+                            class="upload__inputfile"
+                        />
+                    </label>
+                </div>
+
+                <div class="upload__img-wrap">
+                    <div
+                        *ngFor="
+                            let image of uploadedFiles;
+                            let i = index
+                        "
+                        class="upload__img-box"
+                    >
+                        <div
+                            [style.background-image]="
+                                'url(' + image.url + ')'
+                            "
+                            [attr.data-number]="i"
+                            [attr.data-file]="image.name"
+                            class="img-bg"
+                        >
+                            <div
+                                (click)="removeImage(i)"
+                                class="upload__img-close"
+                            ></div>
+
+                            <div *ngIf="isLoading">
+                                <div class="upload__preloader">
+                                    <div
+                                        class="inline-block h-20 w-20 bg-slate-500 rounded-lg"
+                                    >
+                                        <div
+                                            class="circle-spin-1 spinner-d"
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <ng-container
+                        *ngIf="
+                            product_id &&
+                            uploadedReturnedImage.length > 0
+                        "
+                    >
+                        <div
+                            *ngFor="
+                                let image of uploadedReturnedImage;
+                                let i = index
+                            "
+                            class="upload__img-box"
+                        >
+                            <div
+                                [style.background-image]="
+                                    'url(' + image.url + ')'
+                                "
+                                [attr.data-number]="i"
+                                [attr.data-file]="image.name"
+                                class="img-bg"
+                            >
+                                <div
+                                    (click)="removeImage(i)"
+                                    class="upload__img-close"
+                                ></div>
+                            </div>
+                        </div>
+                    </ng-container> -->
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
       <div class="form-group">
-        <mat-form-field appearance="outline">
+        <mat-form-field  appearance="outline">
           <mat-label>  Brands </mat-label>
           <mat-select  name="locationAllowed" formControlName="brand">
-            <mat-option *ngFor="let location of locationList" [value]="location">
-              {{ location }}
+            <mat-option *ngFor="let name of brands" [value]="name">
+              {{ name.name | titlecase }}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
 
-
-
-      <!-- <label for="">Select Category </label> -->
-      <mat-form-field appearance="outline">
+ 
+   
+      <mat-form-field  appearance="outline">
         <mat-label> Select Category </mat-label>
         <mat-select name="jobCategory" formControlName="category">
-          <mat-option *ngFor="let category of categoriesList" [value]="category">
-            {{ category }}
+          <mat-option *ngFor="let category of categories" [value]="category">
+            {{ category.name | titlecase }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -49,7 +159,7 @@
 
       <div class="form-group">
         <label for=""> Price  </label>
-        <input class="form-input" formControlName="price" type="text" name="name"
+        <input class="form-input" formControlName="price" type="number" name="name"
           placeholder="eg. HP Envy Brand New" [ngClass]="{
             'is-invalid': submitted && getControls.price.errors
           }
@@ -57,8 +167,7 @@
           " />
         <div *ngIf="submitted && getControls.price.errors" class="invalid-feedback">
           <div *ngIf="getControls.price.errors.required">
-            Example: "Principal Software Engineer”. Titles must describe one
-            name.
+            Amount is required
           </div>
         </div>
       </div>
