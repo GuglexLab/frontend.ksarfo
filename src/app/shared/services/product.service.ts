@@ -87,10 +87,12 @@ export class ProductService {
    */
   addNewProduct(companyData : any) {
     let payload = JSON.stringify(companyData);
+    const token = localStorage.getItem('currentUser');
 
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
       }),
     };
     return this.httpClient.post(this.BASE_URL, payload, httpOptions);
@@ -102,14 +104,16 @@ export class ProductService {
    * @param companyData 
    */
   updateProduct(companyId : string , companyData : any) {
-    
+    const token = localStorage.getItem('currentUser');
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
       }),
     };
 
-    return this.httpClient.put(this.BASE_URL + companyId , companyData, httpOptions);
+    return this.httpClient.put(`${this.BASE_URL}/` + companyId , companyData, httpOptions);
   }
 
 
@@ -117,17 +121,18 @@ export class ProductService {
    * 
    * @param jobId 
    */
-  deleteProduct(companyId : string) {
-    // return this.delete(this.getUrlById(jobId));
+  deleteProduct(productId : string) {
+     const token = localStorage.getItem('currentUser');
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
       }),
     };
 
-    return this.httpClient.delete(this.BASE_URL + companyId, {
-      ...httpOptions,
-      withCredentials : true
+    return this.httpClient.delete(`${this.BASE_URL}/` + productId + "/delete", {
+      ...httpOptions
     })
 
   }

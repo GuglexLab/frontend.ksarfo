@@ -1,0 +1,267 @@
+p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.main-wrapper-overall {
+  // height: 100%;
+  background-color: aliceblue;
+}
+
+.main-wrapper {
+  margin: 0 auto;
+  max-width: 93em;
+  font-weight: 400;
+  height: 100%;
+  // background-color: aliceblue;
+}
+
+
+
+.main-content-side {
+  border-top: 4px solid teal;
+  border-radius: 4px;
+  height: 30em;
+}
+
+ 
+.shadow-shade {
+  // box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+
+
+.main-content {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.content-left {
+  width: 68%;
+  background-color: white;
+  // box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+
+.content-right {
+  width: 30%;
+}
+
+.image-container {
+  width: 35em;
+}
+ 
+
+.badges {
+  display: inline-block;
+  padding: 1px 16px;
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.basic {
+  background-color: white;
+  color: black;
+}
+
+ 
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+
+  .main-image {
+      height: 55em;
+      background-size: cover;
+      object-fit: cover;
+      background-position: center center;
+      width: 100% !important;
+      background-color: #ededed;
+  }
+
+  .arrow-container {
+      display: flex;
+  }
+
+  // .sub-images-container {
+  //     display: flex;
+  //     flex-wrap: wrap;
+
+  //     img {
+  //         display: flex;
+  //         flex-wrap: wrap;
+  //         border-radius: 6px;
+  //         margin-bottom: 5px;
+  //         border: 2px solid rgb(221, 218, 218);
+  //     }
+  // }
+}
+
+::ng-deep.mat-mdc-chip-set .mdc-evolution-chip-set__chips {
+  min-width: 100%;
+  // background: tomato;
+  display: flex;
+  overflow: scroll;
+  flex-wrap: nowrap;
+}
+
+@media only screen and (max-width: 960px) {
+  .main-wrapper {
+      margin: 0 auto;
+      max-width: 88em;
+  }
+
+  .prod-meta-wrapper {
+      flex-wrap: wrap;
+  }
+
+  // .carousel-container {
+  //     position: relative;
+  //     img {
+  //         height: 30em;
+  //         background-size: contain;
+  //         width: 100%;
+  //         object-fit: cover;
+  //     }
+
+  //     .main-image {
+  //         height: 30em;
+  //         background-size: cover;
+       
+  //         object-fit: contain;
+  //         border-top: 6px solid teal;
+  //         background-position: center;
+  //         width: 100% !important;
+         
+  //         background-color: rgb(197, 195, 195);
+  //     }
+  // }
+
+  .content-right {
+      width: 99%;
+      margin-top: 2em;
+  }
+
+  .content-left {
+      width: 99%;
+  }
+
+  .main-content-side {
+      margin: 0 !important;
+      height: 55em;
+  }
+
+  .relatedCategories {
+      margin-top: 3em;
+      padding-bottom: 4em;
+      padding: 0.5em;
+  }
+}
+
+hr {
+  padding: 0 !important;
+  margin: 5px 0 !important;
+  color: rgb(241, 241, 239);
+}
+
+.shareit {
+  display: flex;
+}
+
+.shareit a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin: 0.2em 0.2em;
+  color: #fff;
+  opacity: 0.75;
+  transition: opacity 0.15s linear;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000 !important;
+}
+
+.shareit a:hover {
+  opacity: 1;
+}
+
+.facebook {
+  background: #3b5998;
+}
+
+.twitter {
+  background: #55acee;
+}
+
+.linkedin {
+  background: #0077b5;
+}
+
+.whatsapp {
+  background: teal;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+a:hover {
+  color: #222222;
+}
+ 
+ 
+ 
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 1rem;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.breadcrumb:hover {
+  color: #0056b3;
+}
+
+
+
+.breadcrumb-item {
+  display: inline-block;
+  color: #282c31;
+  font-size: 12px;
+  margin: 0.2rem 0;
+  border: 1px solid #949493;
+  border-radius: 15px;
+  padding: 0 .5em;
+  background: #fffafa;
+
+  &:hover{
+      cursor: pointer;
+  }
+}
+
+
+.breadcrumb-separator {
+  margin: 0 0.25rem;
+  color: #adb5bd;
+}
+
+.breadcrumb-item:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+.breadcrumb-item:first-child {
+  margin-left: 0;
+}
+
+.breadcrumb-item:last-child {
+  margin-right: 0;
+}

@@ -67,7 +67,7 @@
                 <div class="upload__img-wrap">
                     <div
                         *ngFor="
-                            let image of uploadedFiles;
+                            let image of images;
                             let i = index
                         "
                         class="upload__img-box"
@@ -219,11 +219,20 @@
 
 
       <div class="form-group">
+
+
         <mat-card-header>
           <p>Job Description</p>
         </mat-card-header>
 
-        <mat-card-content>
+
+        <textarea id="message" 
+        formControlName="description" 
+        contenteditable
+        class="form-input form-field" placeholder="Production description" rows="6" required></textarea>
+
+
+        <!-- <mat-card-content>
           <editor apiKey="96v08iycybbz8rffjogkkarvz1pkcf7s6skp266n2taioplo" 
            formControlName="description" name="description" #editor [init]="{
             height: 200,
@@ -244,7 +253,9 @@
           <div *ngIf="getControls.description.errors.required">
             Please add  description
           </div>
-        </div>
+        </div> -->
+
+
       </div>
 
 

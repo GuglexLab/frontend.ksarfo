@@ -17,6 +17,23 @@
 }
 
 
+.content-left {
+  width: 68%;
+  background-color: white;
+  // box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+
+  img{
+    // height: 40vh;
+    height: 45em;
+  }
+}
+
+.content-right {
+  width: 30%;
+  padding: 0 1em;
+}
+
 
 .logo {
   border: 2px solid rgb(177, 174, 174);

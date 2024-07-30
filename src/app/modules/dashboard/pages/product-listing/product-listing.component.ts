@@ -34,6 +34,11 @@ export class ProductListingComponent implements OnInit {
 
   deleteProduct(prod){
     console.log("prod", prod._id);
+    this.productService.deleteProduct(prod._id).subscribe((data :any) => {
+      console.log(data, "")
+      window.location.reload();
+      this.loadAllProducts();
+    })
   }
 
 }

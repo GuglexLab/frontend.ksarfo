@@ -7,7 +7,7 @@ import { AuthGuardService } from 'src/app/shared/services/auth-guard.service';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { SidebarComponent } from 'src/app/shared/components/sidebar/sidebar.component';
-import { ProductDetailsComponent } from './pages/job-details/job-details.component';
+import { ProductDetailsComponent } from './pages/product-details/job-details.component';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 import { SearchBarComponent } from 'src/app/shared/components/search-bar/search-bar.component';
 import { BrandFooterComponent } from 'src/app/shared/components/brand-footer/brand-footer.component';

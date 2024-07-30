@@ -27,7 +27,7 @@ import imageCompression from 'browser-image-compression';
 export class PostJobComponent implements OnInit {
   loading = false;
   submitted = false;
-  uploadedFiles : any[] = [];
+  images : any[] = [];
   uploadError = false;
   showUploadLoader = false;
   uploadErrorMessage : string;
@@ -136,7 +136,7 @@ export class PostJobComponent implements OnInit {
         // this.isLoading = true;
         for (let i = 0; i < files.length; i++) {
           if (files[i].size <= 7 * 1024 * 1024) {
-            // this.compressImage(files[i]);
+            this.compressImage(files[i]);
 
           } else {
             const errorMessage = `File ${files[i].name} exceeds 7MB and will not be processed.`;
@@ -170,16 +170,13 @@ export class PostJobComponent implements OnInit {
     try {
       const compressedFile = await imageCompression(file, options);
       const fileName = compressedFile.name;
-      const fileAlreadyExists = this.uploadedFiles.some(file => file.name === fileName);
+      const fileAlreadyExists = this.images.some(file => file.name === fileName);
 
       if(!fileAlreadyExists){
       this.uploadService.uploadImageWithWaterMark(compressedFile).subscribe({
         next : (uploaded) =>{
           if(uploaded.status){            
-            uploaded.uploadedFiles?.forEach((file, index) => {
-              const formattedFile = { url: file.url }; 
-              this.uploadedFiles.push(formattedFile);
-            });
+            this.images = uploaded.uploadedFiles?.map(file => file.url) || [];
 
             this.isLoading = false;
             this._changeDetectorRef.detectChanges();
@@ -209,8 +206,15 @@ export class PostJobComponent implements OnInit {
 
   submit() {
     console.log(this.postJobForm.value, "DATA::::::");
+
+    let data = {
+      ...this.postJobForm.value,
+      images : this.images
+    }
+
+    console.log(data, "DATA:::");
   
-    this.productService.addNewProduct(this.postJobForm.value).subscribe(
+    this.productService.addNewProduct(data).subscribe(
       (res: any) => {
         console.log(res);
 
@@ -226,31 +230,3 @@ export class PostJobComponent implements OnInit {
     );
   }
 }
-
-
-// {
-//   "inStock": true,
-//   "discount": 0,
-//   "name": "Testing Service",
-//   "description": "Selling and Testing",
-//   "brand": "hp",
-//   "category": "electronics",
-//   "images": [
-//       "https://trenda-production-uploads.s3.eu-north-1.amazonaws.com/uploads/431e0763-4e09-45a3-bc99-c8ee9b80604aWhatsApp%20Image%202023-11-11%20at%2018.webp",
-//       "https://trenda-production-uploads.s3.eu-north-1.amazonaws.com/uploads/a4342c05-5746-4e95-a5dc-3c703cd2f765F0DBFC6D-6CBD-40CB-9F0B-1A6CCDAB8895.webp"
-//   ],
-//   "reviews": [],
-//   "price": 3800,
-//   "totalQty": 12,
-//   "totalSold": 0,
-//   "metadata": [
-//       {
-//           "key": "Condition",
-//           "value": "Brand New"
-//       }
-//   ],
-//   "qtyLeft": 2,
-//   "totalReviews": 0,
-//   "averageRating": "NaN",
-//   "id": "669ee9c8115eeac070c11ad0"
-// }
