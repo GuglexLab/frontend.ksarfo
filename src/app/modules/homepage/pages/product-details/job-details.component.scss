@@ -4,7 +4,6 @@ p {
 }
 
 .main-wrapper-overall {
-  // height: 100%;
   background-color: aliceblue;
 }
 
@@ -16,20 +15,23 @@ p {
   // background-color: aliceblue;
 }
 
-
-
 .main-content-side {
-  border-top: 4px solid teal;
+  // border-top: 4px solid teal;
   border-radius: 4px;
   height: 30em;
 }
 
- 
-.shadow-shade {
-  // box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-}
+.account-verified {
+  mat-icon {
+      font-size: 20px !important;
+  }
 
+  p {
+      font-size: 15px !important;
+      color: green;
+  }
+}
+ 
 
 .main-content {
   width: 100%;
@@ -41,7 +43,7 @@ p {
   width: 68%;
   background-color: white;
   // box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  // box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
 }
 
 .content-right {
@@ -51,30 +53,20 @@ p {
 .image-container {
   width: 35em;
 }
- 
 
-.badges {
-  display: inline-block;
-  padding: 1px 16px;
-  text-align: center;
-  text-transform: capitalize;
-  font-weight: 500;
+.relatedCategories {
+  padding-bottom: 8em;
 }
-
-.basic {
-  background-color: white;
-  color: black;
-}
-
  
 .carousel-container {
   position: relative;
   overflow: hidden;
 
   .main-image {
-      height: 55em;
+      height: 45em;
       background-size: cover;
       object-fit: cover;
+       
       background-position: center center;
       width: 100% !important;
       background-color: #ededed;
@@ -84,18 +76,18 @@ p {
       display: flex;
   }
 
-  // .sub-images-container {
-  //     display: flex;
-  //     flex-wrap: wrap;
+  .sub-images-container {
+      display: flex;
+      flex-wrap: wrap;
 
-  //     img {
-  //         display: flex;
-  //         flex-wrap: wrap;
-  //         border-radius: 6px;
-  //         margin-bottom: 5px;
-  //         border: 2px solid rgb(221, 218, 218);
-  //     }
-  // }
+      img {
+          display: flex;
+          flex-wrap: wrap;
+          border-radius: 6px;
+          margin-bottom: 5px;
+          border: 2px solid rgb(221, 218, 218);
+      }
+  }
 }
 
 ::ng-deep.mat-mdc-chip-set .mdc-evolution-chip-set__chips {
@@ -116,27 +108,22 @@ p {
       flex-wrap: wrap;
   }
 
-  // .carousel-container {
-  //     position: relative;
-  //     img {
-  //         height: 30em;
-  //         background-size: contain;
-  //         width: 100%;
-  //         object-fit: cover;
-  //     }
+  .carousel-container {
+      position: relative;
+      img {
+          background-size: contain;
+          width: 100%;
+          object-fit: cover;
+      }
 
-  //     .main-image {
-  //         height: 30em;
-  //         background-size: cover;
-       
-  //         object-fit: contain;
-  //         border-top: 6px solid teal;
-  //         background-position: center;
-  //         width: 100% !important;
-         
-  //         background-color: rgb(197, 195, 195);
-  //     }
-  // }
+      .main-image {
+          height: 40em;
+          background-size: cover;
+          object-fit: contain;
+          background-position: center;
+          width: 100% !important;
+      }
+  }
 
   .content-right {
       width: 99%;
@@ -149,7 +136,7 @@ p {
 
   .main-content-side {
       margin: 0 !important;
-      height: 55em;
+      // height: 55em;
   }
 
   .relatedCategories {
@@ -181,7 +168,6 @@ hr {
   opacity: 0.75;
   transition: opacity 0.15s linear;
   text-decoration: none;
-  border-radius: 4px;
   z-index: 1000 !important;
 }
 
@@ -213,8 +199,17 @@ a {
 a:hover {
   color: #222222;
 }
+
  
- 
+
+.wrapper-grailer {
+  column-count: 4;
+  img {
+      width: 100%;
+      margin-bottom: 1rem;
+  }
+}
+
  
 
 .breadcrumb {
