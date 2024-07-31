@@ -15,8 +15,7 @@ import { HeaderComponent } from './pages/home/header/header.component';
 import { HeaderAdComponent } from './pages/home/header-ad/header-ad.component';
 import { JobTypesComponent } from 'src/app/shared/components/job-types/job-types.component';
 import { SubscriberFooterComponent } from 'src/app/shared/components/subscriber-footer/subscriber-footer.component';
-import { MatCarouselModule } from '@ngbmodule/material-carousel';
-
+ 
 @NgModule({
     declarations: [
         HomeComponent,   

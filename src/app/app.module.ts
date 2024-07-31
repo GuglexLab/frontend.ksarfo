@@ -6,8 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule , HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
-import { MatCarouselModule } from '@ngbmodule/material-carousel';
-// import { AdminModule } from './modules/admin/admin.module';
 import { UserAuthModule } from './modules/auth/user-auth.module';
 import { HomepageModule } from './modules/homepage/homepage.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
@@ -23,8 +21,8 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
-    HttpClientModule,
-    MatCarouselModule.forRoot(),
+    HttpClientModule
+ 
   ],
 
   providers: [
