@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import {
-  FormGroup,
+  UntypedFormGroup,
   Validators,
-  FormBuilder,
+  UntypedFormBuilder,
   FormGroupDirective,
-  FormControl,
+  UntypedFormControl,
   NgForm,
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,7 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
-    control: FormControl | null,
+    control: UntypedFormControl | null,
     form: FormGroupDirective | NgForm | null
   ): boolean {
     const isSubmitted = form && form.submitted;
@@ -51,7 +51,7 @@ export class SignupComponent implements OnInit {
   submitted = false;
   isLoading = false;
   signupError;
-  signUpForm: FormGroup;
+  signUpForm: UntypedFormGroup;
 
   matcher = new MyErrorStateMatcher();
 
@@ -59,7 +59,7 @@ export class SignupComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private jwtService: JwtHelperService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private snackBar: MatSnackBar
   ) {}
 

@@ -2,10 +2,10 @@ import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { NotificationService } from "src/app/shared/services/notification.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import {
-  FormBuilder,
+  UntypedFormBuilder,
   FormControl,
-  FormGroup,
-  FormArray,
+  UntypedFormGroup,
+  UntypedFormArray,
   Validators
 } from "@angular/forms";
 import {
@@ -37,14 +37,14 @@ export class PostJobComponent implements OnInit {
   categoriesList = CategoriesList;
   categories = [];
   brands = [];
-  postJobForm: FormGroup;
+  postJobForm: UntypedFormGroup;
   isLoading : Boolean = false;
  
 
   constructor(
     private router: Router,
     private productService : ProductService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private categoriesService : CategoryService,
     private brandsSerice : BrandsService,
     private uploadService : UploadServiceService,
@@ -83,11 +83,11 @@ export class PostJobComponent implements OnInit {
   }
 
   get metadata() {
-    return this.postJobForm.get('metadata') as FormArray;
+    return this.postJobForm.get('metadata') as UntypedFormArray;
   }
 
 
-  createMetadata(): FormGroup {
+  createMetadata(): UntypedFormGroup {
     return this.fb.group({
       key: [''],
       value: ['']
