@@ -19,23 +19,12 @@
 				</button>
 
 				<a href="#"
-					class="font-bold text-gray-700 text-2xl">
-					KSarfo.
+					class="font-bold text-red-700 text-2xl">
+					KSarfo Computers
 				</a>
 
 				<div class="hidden md:flex space-x-3 flex-1 lg:ml-8">
-					<a href="#"
-						class="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600">
-						Electronics
-					</a>
-					<a href="#"
-						class="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600">
-						Computers
-					</a>
-					<a href="#"
-						class="px-2 py-2 hover:bg-gray-100 rounded-lg text-gray-400 hover:text-gray-600">
-						Laptops
-					</a>
+				 
 
 				</div>
 
@@ -98,18 +87,7 @@
 		<div class="py-6"  *ngIf="product; else loading">
 			<div
 				class="max-w-7xl mx-auto  mt-12">
-
-				<!-- {{ product }} -->
-
-				<!-- <a class="breadcrumb" (click)="findRelatedCategories(product?.category?.url)">
-				<span class="breadcrumb-item">All Categories</span>
-				<span class="breadcrumb-separator">/</span>
-				<span class="breadcrumb-item">{{ product?.category?.name }}</span>
-				<span class="breadcrumb-separator">/</span>
-				<span class="breadcrumb-item">{{ product?.subCategory?.name }}</span>
-				<span class="breadcrumb-separator">/</span>
-				<span class="breadcrumb-item">{{ product?.postTitle }}</span>
-			  </a> -->
+ 
 
 				<div class="flex flex-col justify-between md:flex-row main-content">
 					<div class="content-left">
@@ -120,8 +98,8 @@
 									<img *ngIf="images.length > 0" [src]="images[currentImageIndex]" class="main-image rounded-md" alt="Main product image">
 									<div *ngIf="images.length > 1" class="p-2 arrow-container">
 									  <div class="sub-images-container" style="display: flex;">
-										<div class="sub-images-container-idx" style="width: 50px;" *ngFor="let image of images; let i = index" (click)="changeMainImage(i)">
-										  <img [src]="image" class="" class="w-26 h-26 object-cover" alt="Thumbnail" [class.selected]="i === currentImageIndex">
+										<div class="sub-images-container-idx"  *ngFor="let image of images; let i = index" (click)="changeMainImage(i)">
+										  <img [src]="image" class="w-36 h-36 object-cover" alt="Thumbnail" [class.selected]="i === currentImageIndex">
 										</div>
 									  </div>
 									</div>
@@ -242,19 +220,15 @@
 
 									<div class="p-2">
 										<div class="flex flex-col">
-
 											<div class="flex  items-center">
 												<button class="mr-2  items-center  text-gray-400 font-normal py-2 px-4   border border-yellow-500 transition duration-200 ease-in-out">
 													<span>Buy Now</span>
 												</button>
 					
-												<button class="  bg-green-400   text-gray-400 font-normal py-2 px-4   border border-green-500 transition duration-200 ease-in-out">
+												<button class="  bg-red-500   text-white font-normal py-2 px-4  transition duration-200 ease-in-out">
 													<span>Chat with us Now</span>
 												</button>
-											 
-											</div>
-
-											 
+											</div>	 
 										</div>
 									</div>
 								</div>
@@ -267,7 +241,7 @@
 			
 							<div class="side-content p-2">
 								<div class="flex flex-col">
-									<mat-icon>security</mat-icon>
+									<i class="fa fa-shield-alt"></i>
 									<p>
 										Security Policy (Edit With Customer Reassurance Module)
 									</p>
@@ -275,7 +249,7 @@
 								</div>
 
 								<div class="flex flex-col">
-									<mat-icon>local_shipping</mat-icon>
+									<i class="fa fa-shield-alt"></i>
 									<!-- <mat-icon> trip_origin</mat-icon> -->
 									<p>
 										Delivery Policy (Edit With Customer Reassurance Module)
@@ -284,17 +258,11 @@
 								</div>
 
 								<div class="flex flex-col">
-									<mat-icon>expand_more</mat-icon>
+									<i class="fa fa-shield-alt"></i>
 									<p>
 										Return Policy (Edit With Customer Reassurance Module)
 									</p>
 								</div>
-							</div>
-			
-							   <div class="pb-4">
-								<button class="btnn teal-color py-1" (click)="raiseAlarm()">
-									Chat support as soon as possible
-								</button>
 							</div>
 							</div>
 
